@@ -50,8 +50,8 @@ def correct_single_frame(
     D_dsm = compute_dsm_depth_map(cam, dsm, ray_cfg, (H, W))
     D_dp = depth_pro.infer_depth(image_rgb, cam.K[0, 0])
 
-    ground_mask = build_ground_mask(dsm)
-    roof_mask = build_roof_mask(dsm)
+    ground_mask = build_ground_mask(D_dsm)
+    roof_mask = build_roof_mask(D_dsm)
     sky_mask = build_sky_mask(D_dsm)
 
     base_masks = {
